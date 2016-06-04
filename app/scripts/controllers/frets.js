@@ -9,9 +9,10 @@
  */
 angular.module('newGuitarApp')
   .controller('FretsCtrl', function ($scope) {
-    $scope.awesomeThings = [
-      'HTML5 Boilerplate',
-      'AngularJS',
-      'Karma'
-    ];
+   $scope.fretboard = ['images/fretboard/fretboard.png',
+   						'images/fretboard/leftFretboard.png',
+   						'images/fretboard/mobileFretboard.png'
+  					 ];
+
+  	$scope.musicSharps = ["A","A#","B","C","C#","D","D#","E","F","F#","G","G#"];
   });

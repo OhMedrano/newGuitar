@@ -1,0 +1,53 @@
+<div id=''class=''style=''>
+
+
+		<!-- DESKTOP -->
+		<div id=''class='hidden-sm hidden-xs'style=''>
+			<div id=''class='col-md-12'style=''>
+				<div id=''class=''style='background:url({{fretboard[0]}}) no-repeat;background-size:contain;height:27vh;'>
+						<guitar-String root='strings[0]'></guitar-String>
+						<guitar-String root='strings[1]'></guitar-String>
+						<guitar-String root='strings[2]'></guitar-String>
+						<div id=''class='col-md-12'style='padding:0.3%'>
+
+						</div>
+						<guitar-String root='strings[3]'></guitar-String>
+						<guitar-String root='strings[4]'></guitar-String>
+						<guitar-String root='strings[5]'></guitar-String>
+
+				</div>
+			</div>
+
+			<div id=''class='col-md-12'style='border:1px solid black;height:30vh;'>
+				<div id=''class='col-md-4'style='border:1px solid black;'>
+					<div id=''ng-repeat='string in strings track by $index'class=''style=''>
+							<div id=''class='col-md-2'style=''>
+								<div id=''class='col-md-4'style=''>
+									{{musicNotes[string]}}
+								</div>
+								<div id=''class='col-md-6'style=''>
+								<span class='col-md-1 glyphicon glyphicon-chevron-down'> </span>
+								<span class='col-md-1 glyphicon glyphicon-chevron-down'> </span>
+								</div>
+
+							</div>
+
+
+					</div>
+
+				</div>
+
+			</div>
+
+		</div>
+
+		<!-- MOBILE -->
+		<div id=''class='hidden-md hidden-lg'style=''>
+
+
+
+
+
+		</div>
+
+</div>
