@@ -26,15 +26,15 @@
 						<div id=''class='col-md-12'style='padding:0.3%'>
 
 						</div>
-						<guitar-String notes='musicNotes'root='strings[0]'></guitar-String>
-						<guitar-String notes='musicNotes'root='strings[1]'></guitar-String>
-						<guitar-String notes='musicNotes'root='strings[2]'></guitar-String>
+						<guitar-String colors='{{scaleColors}}'scale='{{currentScale}}'notes='musicNotes'root='strings[0]'></guitar-String>
+						<guitar-String colors='{{scaleColors}}'scale='{{currentScale}}'notes='musicNotes'root='strings[1]'></guitar-String>
+						<guitar-String colors='{{scaleColors}}'scale='{{currentScale}}'notes='musicNotes'root='strings[2]'></guitar-String>
 						<div id=''class='col-md-12'style='padding:0.4%'>
 
 						</div>
-						<guitar-String notes='musicNotes'root='strings[3]'></guitar-String>
-						<guitar-String notes='musicNotes'root='strings[4]'></guitar-String>
-						<guitar-String notes='musicNotes'root='strings[5]'></guitar-String>
+						<guitar-String colors='{{scaleColors}}'scale='{{currentScale}}'notes='musicNotes'root='strings[3]'></guitar-String>
+						<guitar-String colors='{{scaleColors}}'scale='{{currentScale}}'notes='musicNotes'root='strings[4]'></guitar-String>
+						<guitar-String colors='{{scaleColors}}'scale='{{currentScale}}'notes='musicNotes'root='strings[5]'></guitar-String>
 
 				</div>
 			</div>
@@ -55,7 +55,8 @@
 				</div>
 				<div ng-if='changeTools == 0'id='changeScale'class='col-md-6'style='padding:4%;'ng-model='changeScale(pickedScale,musicRoot)'>
 						<div id=''class='col-md-12'style='padding:2%;border-bottom:1px solid black;'>
-
+							{{currentScale}} 
+							{{scaleColors}} {{scaleInterNames}}
 							<div ng-repeat='note in musicNotes'id=''class='col-md-1'style=''ng-click='pickTone($index)'>
 							{{note}}
 

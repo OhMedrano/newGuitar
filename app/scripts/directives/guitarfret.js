@@ -46,6 +46,20 @@ angular.module('newGuitarApp')
       		//DEFAULT STRING SETTINGS
 
       		//SCALE FORUMLAS AND SCALE VARIABLES
+      		scope.scaleIntervals = [
+      								{"name":"Tonic","colors":"F2291A"},
+      								{"name":"Minor Second","colors":"E58324"},
+      								{"name":"Major Second","colors":"FCB11B"},
+      								{"name":"Minor Third","colors":"F2CE33"},
+      								{"name":"Major Third","colors":"FCED2F"},
+      								{"name":"Perfect Fourth","colors":"BCE536"},
+      								{"name":"Augmented Fourth","colors":"64FC2F"},
+      								{"name":"Perfect Fifth","colors":"33E5BC"},
+      								{"name":"Minor Sixth","colors":"2b61f2"},
+      								{"name":"Major Sixth","colors":"8F34E5"},
+      								{"name":"Minor Seventh","colors":"E92DFC"},
+      								{"name":"Major Seventh","colors":"F24493"}  								
+      		]
       		scope.allScale = [
                           			{"name":"Major/Ionian","scale":[0,2,4,5,7,9,11]},
       						        {"name":"Minor/Aeolian","scale":[0,2,3,5,7,8,10]},
@@ -65,6 +79,8 @@ angular.module('newGuitarApp')
       		scope.currentScale = scope.allScale[0].scale;
       		scope.pickedScale = [];
       		scope.scaleName;
+      		scope.scaleInterNames;
+      		scope.scaleColors;
 
       		//SCALE FORUMLAS
 
@@ -156,7 +172,8 @@ angular.module('newGuitarApp')
       		scope.changeScale = function(scale,key){
       			var altNotes = [];
       			var keyNotes = [];
-
+      			var keyNames = [];
+      			var keyColors = [];
       			//Builds the alternate order of music notes. 
       			for(var x=0;x<scope.musicNotes.length;x++){
       				if(x == key){
@@ -170,12 +187,20 @@ angular.module('newGuitarApp')
       			//Plucks out the key notes in the alternate music notes
       			for(var y=0;y<=scale.length-1;y++){
       				keyNotes.push(altNotes[scale[y]]);
+      				keyColors.push(scope.scaleIntervals[scale[y]].colors);
+      				keyNames.push(scope.scaleIntervals[scale[y]].name);
       			};
       			//
 
       			//currentScale inherits the scale notes
       			scope.currentScale = keyNotes;
+      			
+      			scope.scaleColors = keyColors;
+      			scope.scaleInterNames = keyNames;
+
       			//
+
+
 
 
       		};

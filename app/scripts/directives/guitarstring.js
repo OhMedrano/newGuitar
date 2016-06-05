@@ -11,7 +11,9 @@ angular.module('newGuitarApp')
     return {
     	scope:{
     		notes:'=notes',
-    		root: '=root'
+    		root: '=root',
+    		scale: '@scale',
+    		colors: '@colors'
     	},
       templateUrl:'templates/guitarString.html',
       restrict: 'E',
@@ -36,14 +38,27 @@ angular.module('newGuitarApp')
         	//
         	console.log(scope.notes)
 
+        	scope.colorChange = function(selNote,selScale){
+        		for(var x=0;x<=selScale.length-1;x++){
+        			if(selNote == selScale[x]){
+        				element.css('background-color',scope.colors[x]);
+        				element.css('color','white');
+        			}
+        		}
 
-        	 scope.$watchGroup(['root','notes','newNotes'],function(newVal,oldVal){
+
+        	}
+
+
+        	 scope.$watchGroup(['root','notes','newNotes','scale','colors'],function(newVal,oldVal){
       			//WATCH FOR NEW VALUES
       			scope.root = newVal[0];
       			scope.notes = newVal[1];
       			scope.newNotes = angular.fromJson(newVal[2]);
+      			scope.scale = angular.fromJson(newVal[3]);
+      			scope.colors = angular.fromJson(newVal[4]);
       			//WATCH FOR NEW VALUES
-
+      			
 
       			//NEW NOTES
       			scope.note0 = (scope.root + 0) %12,
