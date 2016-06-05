@@ -1,26 +1,59 @@
-<div id=''class=''style=''>
+<div id=''class=''style='' ng-init='musicChange()'>
 
 
 		<!-- DESKTOP -->
 		<div id=''class='hidden-sm hidden-xs'style=''>
 			<div id=''class='col-md-12'style=''>
+				<div id=''class='col-md-1 col-md-offset-2'style='border:1px solid black;'>
+					<div id=''class='col-md-12'style=''>
+					  Notation
+
+					</div>
+					<div id=''class='col-md-6'style=''ng-click='musicNotes = musicSharps'>
+					Sharps
+
+					</div>
+					<div id=''class='col-md-6'style=''ng-click='musicNotes = musicFlats'>
+					Flats
+
+					</div>
+
+				</div>
+
+			</div>
+			<div id=''class='col-md-12'style=''>
 				<div id=''class=''style='background:url({{fretboard[0]}}) no-repeat;background-size:contain;height:27vh;'>
-						<guitar-String root='strings[0]'></guitar-String>
-						<guitar-String root='strings[1]'></guitar-String>
-						<guitar-String root='strings[2]'></guitar-String>
+						<guitar-String notes='musicNotes'root='strings[0]'></guitar-String>
+						<guitar-String notes='musicNotes'root='strings[1]'></guitar-String>
+						<guitar-String notes='musicNotes'root='strings[2]'></guitar-String>
 						<div id=''class='col-md-12'style='padding:0.3%'>
 
 						</div>
-						<guitar-String root='strings[3]'></guitar-String>
-						<guitar-String root='strings[4]'></guitar-String>
-						<guitar-String root='strings[5]'></guitar-String>
+						<guitar-String notes='musicNotes'root='strings[3]'></guitar-String>
+						<guitar-String notes='musicNotes'root='strings[4]'></guitar-String>
+						<guitar-String notes='musicNotes'root='strings[5]'></guitar-String>
 
 				</div>
 			</div>
 
-			<div id=''class='col-md-12'style='border:1px solid black;height:40vh;'>
-				<div id=''class='col-md-4'style='border:1px solid black;'>
-					<div id=''ng-repeat='string in strings track by $index'class=''style=''ng-init='order = $index+1'>
+			<div id=''class='col-md-12'style='border:1px solid black;height:60vh;'>
+				<div id='changeString'class='col-md-6'style='border:1px solid black;height:100%;'>
+					<div id=''class=''style='height:100%;'>
+					<div id=''class='col-md-12'style=''>
+						<div ng-click='changeRoots = 0'id=''class='col-md-3'style=''>
+						Individually
+
+
+						</div>
+						<div ng-click='changeRoots = 1'id=''class='col-md-3'style=''>
+						Alternate Tunings
+
+
+						</div>
+						
+					</div>
+
+					<div ng-if='changeRoots == 0'id=''ng-repeat='string in strings track by $index'class=''style=''ng-init='order = $index'>
 							<!-- <div id=''class='col-md-2'style=''>
 								<div id=''class='col-md-4'style=''>
 									{{musicNotes[string]}}
@@ -31,18 +64,28 @@
 								</div>
 
 							</div> -->
-						<div id=''class='col-md-2'style=''>
-						{{musicNotes[string]}}
-						{{order}}
-
+						<div id=''class='col-md-12'style='border-bottom:1px solid black;'>
+						String {{$index+1}} is {{musicNotes[string]}}
 						</div>
 
 						<div id=''class='col-md-12'style=''>
-							<div ng-click='changeNote(order,note)'ng-repeat='note in musicNotes'id=''class='col-md-2'style=''>
+							<div ng-click='changeNote(order,note)'ng-repeat='note in musicNotes'id=''class='col-md-1'style=''>
 							{{note}}
 
 							</div>
 						</div>
+
+					</div>
+
+					<div ng-if='changeRoots == 1'ng-repeat='tune in tunings'id=''class='col-md-3'style='height:auto;margin-bottom:2%;'>
+						<div ng-click='changeGroup(tune.forumla)'id=''class='col-md-12'style='border:1px solid black;
+						height:10vh;'>
+						{{tune.name}}
+
+						</div>
+
+
+					</div>
 
 					</div>
 
