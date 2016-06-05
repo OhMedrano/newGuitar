@@ -18,10 +18,10 @@
 				</div>
 			</div>
 
-			<div id=''class='col-md-12'style='border:1px solid black;height:30vh;'>
+			<div id=''class='col-md-12'style='border:1px solid black;height:40vh;'>
 				<div id=''class='col-md-4'style='border:1px solid black;'>
-					<div id=''ng-repeat='string in strings track by $index'class=''style=''>
-							<div id=''class='col-md-2'style=''>
+					<div id=''ng-repeat='string in strings track by $index'class=''style=''ng-init='order = $index+1'>
+							<!-- <div id=''class='col-md-2'style=''>
 								<div id=''class='col-md-4'style=''>
 									{{musicNotes[string]}}
 								</div>
@@ -30,8 +30,19 @@
 								<span class='col-md-1 glyphicon glyphicon-chevron-down'> </span>
 								</div>
 
-							</div>
+							</div> -->
+						<div id=''class='col-md-2'style=''>
+						{{musicNotes[string]}}
+						{{order}}
 
+						</div>
+
+						<div id=''class='col-md-12'style=''>
+							<div ng-click='changeNote(order,note)'ng-repeat='note in musicNotes'id=''class='col-md-2'style=''>
+							{{note}}
+
+							</div>
+						</div>
 
 					</div>
 

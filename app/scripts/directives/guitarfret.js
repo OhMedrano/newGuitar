@@ -16,7 +16,19 @@ angular.module('newGuitarApp')
       		scope.musicNotes = ["A","A#/Bb","B","C","C#/Db","D","D#/Eb","E","F","F#/Gb","G","G#/Ab"];
 
       		//DEFAULT STRING SETTINGS
-           	scope.strings = [7,2,10,5,0,7];
+           	scope.string1 = 7;
+        	scope.string2 = 2;
+        	scope.string3 = 10;
+        	scope.string4 = 5;
+        	scope.string5 = 0;
+        	scope.string6 = 7;
+
+        	scope.strings = [scope.string1,
+        					 scope.string2,
+        					 scope.string3,
+        					 scope.string4,
+        					 scope.string5,
+        					 scope.string6];
       		//DEFAULT STRING SETTINGS
 
       		//SCALE FORUMLAS
@@ -54,12 +66,17 @@ angular.module('newGuitarApp')
 
       		//!!!FUNCTION!!!
       		//Change the root of the string
-      		scope.changeNote = function($index,note){
-      			for(var i=0;i<scope.strings.length-1;i++){
-      				if($index == i){
-      					scope.strings[i] = note.$index;
-      				};
-      			};
+      		scope.changeNote = function(string,note){
+      			var note = this;
+      			var strin = 'scope.string'+string;
+
+      			console.log(strin);
+      			console.log(note.$index);
+
+      			string = note.$index;
+
+      			
+      			
       		};
 
 
@@ -79,9 +96,15 @@ angular.module('newGuitarApp')
 
       		//!!!FUNCTION!!!WATCH GROUP 
       		//It watches for scope changes.
-      		scope.$watchGroup(['strings'],function(newVal,oldVal){
+      		scope.$watchGroup(['strings','stringE','stringB','stringG','stringD','stringA','stringEe'],function(newVal,oldVal){
       			scope.strings = newVal[0];
-      		});
+      			scope.stringE = newVal[1];
+      			scope.stringB = newVal[2];
+      			scope.stringG = newVal[3];
+      			scope.stringD = newVal[4];
+      			scope.stringA = newVal[5];
+      			scope.stringEe = newVal[6];
+      		})
 
 
 
