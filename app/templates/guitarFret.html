@@ -23,10 +23,13 @@
 			</div>
 			<div id=''class='col-md-12'style=''>
 				<div id=''class=''style='background:url({{fretboard[0]}}) no-repeat;background-size:contain;height:27vh;'>
+						<div id=''class='col-md-12'style='padding:0.3%'>
+
+						</div>
 						<guitar-String notes='musicNotes'root='strings[0]'></guitar-String>
 						<guitar-String notes='musicNotes'root='strings[1]'></guitar-String>
 						<guitar-String notes='musicNotes'root='strings[2]'></guitar-String>
-						<div id=''class='col-md-12'style='padding:0.3%'>
+						<div id=''class='col-md-12'style='padding:0.4%'>
 
 						</div>
 						<guitar-String notes='musicNotes'root='strings[3]'></guitar-String>
@@ -37,7 +40,45 @@
 			</div>
 
 			<div id=''class='col-md-12'style='border:1px solid black;height:60vh;'>
-				<div id='changeString'class='col-md-6'style='border:1px solid black;height:100%;'>
+				<div id=''class='col-md-12'style=''>
+					<div ng-click='changeTools = 0'id=''class='col-md-4'style=''>
+					Tunings
+					</div>
+					<div ng-click='changeTools = 1'id=''class='col-md-4'style=''>
+					Chords
+					</div>
+					<div ng-click='changeTools = 2'id=''class='col-md-4'style=''>
+					Scales
+					</div>
+					
+
+				</div>
+				<div ng-if='changeTools == 0'id='changeScale'class='col-md-6'style='padding:4%;'ng-model='changeScale(pickedScale,musicRoot)'>
+						<div id=''class='col-md-12'style='padding:2%;border-bottom:1px solid black;'>
+
+							<div ng-repeat='note in musicNotes'id=''class='col-md-1'style=''ng-click='pickTone($index)'>
+							{{note}}
+
+
+							</div>
+
+
+						</div>
+
+						<div id=''class='col-md-12'style='height:100%;overflow:auto;'>
+						
+						
+							<div ng-repeat='scale in allScale'id=''class='col-md-3'style='height:5vh;border:1px solid black;margin:0.5%;text-align:center;'ng-click='pickScale(scale)'>
+							{{scale.name}}
+
+							</div>
+
+
+						</div>
+
+
+				</div>
+				<div ng-if='changeTools == 1'id='changeString'class='col-md-6'style='border:1px solid black;height:100%;'>
 					<div id=''class=''style='height:100%;'>
 					<div id=''class='col-md-12'style=''>
 						<div ng-click='changeRoots = 0'id=''class='col-md-3'style=''>

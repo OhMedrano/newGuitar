@@ -16,13 +16,17 @@ angular.module('newGuitarApp')
 
 
        		//MUSIC NOTES
-       		//Sharps and Flats, for you music geeks
+       		//Used to store the notes.
       		scope.musicSharps = ["A","A#","B","C","C#","D","D#","E","F","F#","G","G#"];
       		scope.musicFlats = ["A","Bb","B","C","Db","D","Eb","E","F","Gb","G","Ab"];
       		scope.musicNotes = scope.musicFlats;
+      		
+
+
       		//MUSIC NOTES
 
       		//VARIABLES FOR DISPLAY PURPOSES
+      		scope.changeTools = 0;
       		scope.changeRoots = 0;
 
 
@@ -41,7 +45,7 @@ angular.module('newGuitarApp')
         	scope.strings = [7,2,10,5,0,7];
       		//DEFAULT STRING SETTINGS
 
-      		//SCALE FORUMLAS
+      		//SCALE FORUMLAS AND SCALE VARIABLES
       		scope.allScale = [
                           			{"name":"Major/Ionian","scale":[0,2,4,5,7,9,11]},
       						        {"name":"Minor/Aeolian","scale":[0,2,3,5,7,8,10]},
@@ -57,6 +61,10 @@ angular.module('newGuitarApp')
       						        {"name":"Melodic Minor","scale":[0,2,3,5,7,9,11]},
       						        {"name":"Diminished / 8-Tone","scale":[0,2,3,5,6,8,11]}
       						];
+      		//current Scale set for Major Scale
+      		scope.currentScale = scope.allScale[0].scale;
+      		scope.pickedScale = [];
+      		scope.scaleName;
 
       		//SCALE FORUMLAS
 
@@ -95,6 +103,7 @@ angular.module('newGuitarApp')
 
 
       		];
+      		scope.musicRoot = 3;
       		//ALTERNATE TUNING FORMULAS
 
 
@@ -112,6 +121,8 @@ angular.module('newGuitarApp')
 
       		//!!!FUNCTION!!!
 
+      		//!!!FUNCTION!!!
+      		//Change the roots all at once
       		scope.changeGroup = function(chang){
       			console.log(chang);
       			scope.strings = chang;
@@ -119,12 +130,56 @@ angular.module('newGuitarApp')
       			return scope.strings;
 
       		};
+      		//!!!FUNCTION!!!
+      		
+      		//!!!FUNCTION!!!
+      		//Picking a root note for scale and chord
+      		scope.pickTone = function(note){
+      			scope.musicRoot = note;
+      		};
+
+      		//!!!FUNCTION!!!
+      		
+      		//!!!FUNCTION!!!
+      		//Picking a scale
+      		scope.pickScale = function(scale){
+      			scope.pickedScale = scale.scale;
+      			scope.scaleName = scale.name;
+      		}
+
+      		//!!!FUNCTION!!!
+      		
 
 
+      		//!!!FUNCTION!!!
+      		//Choosing the notes for the given scale.
+      		scope.changeScale = function(scale,key){
+      			var altNotes = [];
+      			var keyNotes = [];
+
+      			//Builds the alternate order of music notes. 
+      			for(var x=0;x<scope.musicNotes.length;x++){
+      				if(x == key){
+      					altNotes.push(x);
+      					for(var i=1;i<=scope.musicNotes.length-1;i++){
+      						altNotes.push((x+i)%12);
+      					}
+      				}
+      			};
+      			//
+      			//Plucks out the key notes in the alternate music notes
+      			for(var y=0;y<=scale.length-1;y++){
+      				keyNotes.push(altNotes[scale[y]]);
+      			};
+      			//
+
+      			//currentScale inherits the scale notes
+      			scope.currentScale = keyNotes;
+      			//
 
 
-
-
+      		};
+      		//!!!FUNCTION!!!
 
 
 
