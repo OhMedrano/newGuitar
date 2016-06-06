@@ -39,7 +39,8 @@
 				</div>
 			</div>
 
-			<div id=''class='col-md-12'style='border:1px solid black;height:60vh;'>
+			<div id=''class='col-md-6'style='border:1px solid black;height:60vh;'>
+				
 				<div id=''class='col-md-12'style=''>
 					<div ng-click='changeTools = 0'id=''class='col-md-4'style=''>
 					Tunings
@@ -53,10 +54,20 @@
 					
 
 				</div>
-				<div ng-if='changeTools == 0'id='changeScale'class='col-md-6'style='padding:4%;'ng-model='changeScale(pickedScale,musicRoot)'>
+				<div ng-if='changeTools == 1'id='changeChord'class='col-md-12'style=''>
+
+
+
+
+
+
+				</div>
+
+
+
+				<div ng-if='changeTools == 2'id='changeScale'class='col-md-12'style='padding:4%;'ng-model='changeScale(pickedScale,musicRoot)'>
 						<div id=''class='col-md-12'style='padding:2%;border-bottom:1px solid black;'>
-							{{currentScale}} 
-							{{scaleColors}} {{scaleInterNames}}
+							
 							<div ng-repeat='note in musicNotes'id=''class='col-md-1'style=''ng-click='pickTone($index)'>
 							{{note}}
 
@@ -79,7 +90,7 @@
 
 
 				</div>
-				<div ng-if='changeTools == 1'id='changeString'class='col-md-6'style='border:1px solid black;height:100%;'>
+				<div ng-if='changeTools == 0'id='changeString'class='col-md-12'style='border:1px none;height:100%;'>
 					<div id=''class=''style='height:100%;'>
 					<div id=''class='col-md-12'style=''>
 						<div ng-click='changeRoots = 0'id=''class='col-md-3'style=''>
@@ -130,6 +141,31 @@
 					</div>
 
 					</div>
+
+				</div>
+
+				</div>
+
+
+				<div id=''class='col-md-6'style='border:1px solid black;height:60vh;'>
+					<div id=''class='col-md-10'style=''>
+
+						<div id=''class='col-md-12'style='border-bottom:1px solid black;'>
+						{{scaleName}} scale uses  
+
+						</div>
+						<div ng-repeat='name in scaleInterNames' id=''class='col-md-4'style=''>
+						<span class='col-md-10'style='text-align:left;'>{{name}}</span>
+
+						<span class='col-md-1' style='text-align:left;border-radius:50%;padding:7px 20px 7px 13px;'color-Note scale='{{currentScale}}'colors='{{scaleColors}}'note='{{currentScale[$index]}}'>{{musicNotes[currentScale[$index]]}}</span>
+
+						</div>
+
+
+					</div>
+
+
+
 
 				</div>
 

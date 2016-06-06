@@ -60,7 +60,7 @@ angular.module('newGuitarApp')
       								{"name":"Minor Seventh","colors":"E92DFC"},
       								{"name":"Major Seventh","colors":"F24493"}  								
       		]
-      		scope.allScale = [
+      		scope.allScale = [		{"name":"Reset","scale":[]},
                           			{"name":"Major/Ionian","scale":[0,2,4,5,7,9,11]},
       						        {"name":"Minor/Aeolian","scale":[0,2,3,5,7,8,10]},
       						        {"name":"Dorian","scale":[0,2,3,5,7,9,10]},
@@ -86,15 +86,20 @@ angular.module('newGuitarApp')
 
       		//CHORD FORUMLAS
       		 scope.chords = [
-                        {"name":"Major","forumla":[0,4,7]},
-                        {"name":"Minor","forumla":[0,3,7]},
-                        {"name":"6th ","forumla":[0,4,7,9]},
-                        {"name":"7th ","forumla":[0,4,7,10]},
-                        {"name":"9th ","forumla":[0,4,7,10,2]},
-                        {"name":"13th (Almost Impossible)","forumla":[0,4,7,10,2,5,9]},
-                        {"name":"Major 7th","forumla":[0,4,7,11]},
-                        {"name":"Minor 7th","forumla":[0,3,7,10]}
+                        {"name":"Major","forumla":[0,4,7],"color":"F2847E"},
+                        {"name":"Minor","forumla":[0,3,7],"color":"7CB1E5"},
+                        {"name":"6th ","forumla":[0,4,7,9],"color":"BB67FC"},
+                        {"name":"7th ","forumla":[0,4,7,10],"color":"E7CAFC"},
+                        {"name":"9th ","forumla":[0,4,7,10,2],"color":"EDF2A6"},
+                        {"name":"13th (Almost Impossible)","forumla":[0,4,7,10,2,5,9],"color":"fff"},
+                        {"name":"Major 7th","forumla":[0,4,7,11],"color":"9DE58B"},
+                        {"name":"Minor 7th","forumla":[0,3,7,10],"color":"F2CBB6"}
           		];
+          	scope.currentChord = [];
+          	scope.pickedChord = [];
+          	scope.chordName;
+          	scope.chordInterNames;
+          	scope.chordColors;
 
       		//CHORD FORUMLAS
 
@@ -165,7 +170,17 @@ angular.module('newGuitarApp')
 
       		//!!!FUNCTION!!!
       		
+      		//!!!FUNCTION!!!
+      		//Picking a chord 
+      		scope.pickChord = function(chord){
+      			scope.pickedChord = chord.forumla;
+      			scope.chordName = chord.name;
 
+
+      		};
+
+
+      		//!!!FUNCTION!!!
 
       		//!!!FUNCTION!!!
       		//Choosing the notes for the given scale.
