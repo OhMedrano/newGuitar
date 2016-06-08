@@ -20,8 +20,9 @@ angular.module('newGuitarApp')
       		scope.musicSharps = ["A","A#","B","C","C#","D","D#","E","F","F#","G","G#"];
       		scope.musicFlats = ["A","Bb","B","C","Db","D","Eb","E","F","Gb","G","Ab"];
       		scope.musicNotes = scope.musicFlats;
+      		scope.music = 3;
+      		scope.musicRoot = 3; //Starts off at C
       		
-
 
       		//MUSIC NOTES
 
@@ -47,21 +48,21 @@ angular.module('newGuitarApp')
 
       		//SCALE FORUMLAS AND SCALE VARIABLES
       		scope.scaleIntervals = [
-      								{"name":"Tonic","colors":"F2291A"},
-      								{"name":"Minor Second","colors":"E58324"},
-      								{"name":"Major Second","colors":"FCB11B"},
-      								{"name":"Minor Third","colors":"F2CE33"},
-      								{"name":"Major Third","colors":"FCED2F"},
-      								{"name":"Perfect Fourth","colors":"BCE536"},
-      								{"name":"Augmented Fourth","colors":"64FC2F"},
-      								{"name":"Perfect Fifth","colors":"33E5BC"},
-      								{"name":"Minor Sixth","colors":"2b61f2"},
-      								{"name":"Major Sixth","colors":"8F34E5"},
-      								{"name":"Minor Seventh","colors":"E92DFC"},
-      								{"name":"Major Seventh","colors":"F24493"}  								
+      								{"name":"Tonic","secName":"Octave","colors":"F2291A"},
+      								{"name":"Minor Second","secName":"Minor Ninth","colors":"E58324"},
+      								{"name":"Major Second","secName":"Major Ninth","colors":"FCB11B"},
+      								{"name":"Minor Third","secName":"Minor Tenth","colors":"F2CE33"},
+      								{"name":"Major Third","secName":"Major Tenth","colors":"FCED2F"},
+      								{"name":"Perfect Fourth","secName":"Perfect 11th","colors":"BCE536"},
+      								{"name":"Augmented Fourth","secName":"Augmented 11th","colors":"64FC2F"},
+      								{"name":"Perfect Fifth","secName":"Perfect 12th","colors":"33E5BC"},
+      								{"name":"Minor Sixth","secName":"Minor 13th","colors":"2b61f2"},
+      								{"name":"Major Sixth","secName":"Major 13th","colors":"8F34E5"},
+      								{"name":"Minor Seventh","secName":"Minor 14th","colors":"E92DFC"},
+      								{"name":"Major Seventh","secName":"Major 14th","colors":"F24493"}  								
       		]
-      		scope.allScale = [		{"name":"Reset","scale":[]},
-                          			{"name":"Major/Ionian","scale":[0,2,4,5,7,9,11]},
+      		scope.allScale = [		  
+                          			        {"name":"Major/Ionian","scale":[0,2,4,5,7,9,11]},
       						        {"name":"Minor/Aeolian","scale":[0,2,3,5,7,8,10]},
       						        {"name":"Dorian","scale":[0,2,3,5,7,9,10]},
       						        {"name":"Phrygian","scale":[0,1,3,5,7,8,10]},
@@ -85,18 +86,19 @@ angular.module('newGuitarApp')
       		//SCALE FORUMLAS
 
       		//CHORD FORUMLAS
-      		 scope.chords = [
-                        {"name":"Major","forumla":[0,4,7],"color":"F2847E"},
-                        {"name":"Minor","forumla":[0,3,7],"color":"7CB1E5"},
-                        {"name":"6th ","forumla":[0,4,7,9],"color":"BB67FC"},
-                        {"name":"7th ","forumla":[0,4,7,10],"color":"E7CAFC"},
-                        {"name":"9th ","forumla":[0,4,7,10,2],"color":"EDF2A6"},
-                        {"name":"13th (Almost Impossible)","forumla":[0,4,7,10,2,5,9],"color":"fff"},
-                        {"name":"Major 7th","forumla":[0,4,7,11],"color":"9DE58B"},
-                        {"name":"Minor 7th","forumla":[0,3,7,10],"color":"F2CBB6"}
+                  scope.currentChord = [];
+                  scope.pickedChord = [];
+      		 scope.musicChords = [
+                        {"name":"Major","forumla":[0,4,7],"color":"#F2847E"},
+                        {"name":"Minor","forumla":[0,3,7],"color":"#7CB1E5"},
+                        {"name":"6th ","forumla":[0,4,7,9],"color":"#BB67FC"},
+                        {"name":"7th ","forumla":[0,4,7,10],"color":"#E7CAFC"},
+                        {"name":"9th ","forumla":[0,4,7,10,2],"color":"#EDF2A6"},
+                        {"name":"13th","forumla":[0,4,7,10,2,5,9],"color":"#CBD9E8"},
+                        {"name":"Major 7th","forumla":[0,4,7,11],"color":"#9DE58B"},
+                        {"name":"Minor 7th","forumla":[0,3,7,10],"color":"#F2CBB6"}
           		];
-          	scope.currentChord = [];
-          	scope.pickedChord = [];
+          	
           	scope.chordName;
           	scope.chordInterNames;
           	scope.chordColors;
@@ -124,14 +126,14 @@ angular.module('newGuitarApp')
 
 
       		];
-      		scope.musicRoot = 3;
+      		
       		//ALTERNATE TUNING FORMULAS
 
 
       		//!!!FUNCTION!!!
       		//Change the root of the string
       		scope.changeNote = function(string,note){
-      			console.log(scope.strings[string]);
+      			
 
       			scope.strings[string] = this.$index;
       			
@@ -145,7 +147,7 @@ angular.module('newGuitarApp')
       		//!!!FUNCTION!!!
       		//Change the roots all at once
       		scope.changeGroup = function(chang){
-      			console.log(chang);
+      			
       			scope.strings = chang;
 
       			return scope.strings;
@@ -157,6 +159,10 @@ angular.module('newGuitarApp')
       		//Picking a root note for scale and chord
       		scope.pickTone = function(note){
       			scope.musicRoot = note;
+      		};
+      		scope.pickToneChord = function(note){
+      			scope.music = note;
+      			
       		};
 
       		//!!!FUNCTION!!!
@@ -175,12 +181,44 @@ angular.module('newGuitarApp')
       		scope.pickChord = function(chord){
       			scope.pickedChord = chord.forumla;
       			scope.chordName = chord.name;
-
+      			scope.chordColors = chord.color;
+      			
 
       		};
 
 
       		//!!!FUNCTION!!!
+
+      		//!!!FUNCTION!!!
+      		//Choosing the notes for the given chord 
+      		scope.changeChord = function(chord,key){
+      			var altNotes = [];
+      			var keyNotes = [];
+      			var keyNames = [];
+      			var keyColors = [];
+      			//Builds the alternate order of music notes. 
+      			for(var x=0;x<scope.musicNotes.length;x++){
+      				if(x == key){
+      					altNotes.push(x);
+      					for(var i=1;i<=scope.musicNotes.length-1;i++){
+      						altNotes.push((x+i)%12);
+      					}
+      				}
+      			};
+      			//
+      			//Plucks out the key notes in the alternate music notes
+      			for(var y=0;y<=chord.length-1;y++){
+      				keyNotes.push(altNotes[chord[y]]);
+      				if(y>3){
+                                    keyNames.push(scope.scaleIntervals[chord[y]].secName);
+                              } else {
+                                    keyNames.push(scope.scaleIntervals[chord[y]].name);
+                              }
+      			};
+      			scope.chordInterNames = keyNames;
+      			scope.currentChord = keyNotes;
+
+      		};
 
       		//!!!FUNCTION!!!
       		//Choosing the notes for the given scale.
@@ -202,8 +240,9 @@ angular.module('newGuitarApp')
       			//Plucks out the key notes in the alternate music notes
       			for(var y=0;y<=scale.length-1;y++){
       				keyNotes.push(altNotes[scale[y]]);
-      				keyColors.push(scope.scaleIntervals[scale[y]].colors);
+      				keyColors.push('#'+scope.scaleIntervals[scale[y]].colors);
       				keyNames.push(scope.scaleIntervals[scale[y]].name);
+
       			};
       			//
 

@@ -11,7 +11,6 @@ angular.module('newGuitarApp')
     return {
     	scope:{
     		scale: '@scale',
-    		chord: '@chord',
     		note: '@note',
     		colors: '@colors'
     	},
@@ -26,7 +25,7 @@ angular.module('newGuitarApp')
 
         		for(var x=0;x<=selScale.length-1;x++){
         			if(selNote == selScale[x]){
-        				element.css('background-color','#'+scope.colors[x]);
+        				element.css('background-color',scope.colors[x]);
         				element.css('color','black');
         				element.css('border','1px none');
         				element.css('border-radius','50%');
@@ -36,16 +35,19 @@ angular.module('newGuitarApp')
         		}
 
 
-        	};
+        	}
+        
+        
        
-        	scope.$watchGroup(['scale','note','chord','colors'],function(newVal,oldVal){
+        	scope.$watchGroup(['scale','note','colors'],function(newVal,oldVal){
         		scope.scale = angular.fromJson(newVal[0]);
         		scope.note = newVal[1];
-        		scope.chord = angular.fromJson(newVal[2]);
-        		scope.colors = angular.fromJson(newVal[3]);
+          		scope.colors = angular.fromJson(newVal[2]);
+           
 
-        		console.log(scope.colors,scope.scale,scope.note);
+        		
         		scope.colorChange(scope.note,scope.scale);
+       
         	})
       }
     };
