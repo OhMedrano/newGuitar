@@ -29,7 +29,6 @@ angular.module('newGuitarApp')
         				element.css('border','1px none');
         				element.css('border-radius','50%');
         				
-
         			}
         		}
 

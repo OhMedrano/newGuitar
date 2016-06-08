@@ -29,6 +29,7 @@ angular.module('newGuitarApp')
       		//VARIABLES FOR DISPLAY PURPOSES
       		scope.changeTools = 0;
       		scope.changeRoots = 0;
+                  scope.noteSwitched = false;
 
 
       		//VARIABLES FOR DISPLAY PURPOSES

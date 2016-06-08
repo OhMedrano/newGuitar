@@ -15,7 +15,8 @@ angular.module('newGuitarApp')
     		scale: '@scale',
     		colors: '@colors',
     		chord: '@chord',
-    		chcolor: '@chcolor'
+    		chcolor: '@chcolor',
+    		switched: '=switched' 
     	},
       templateUrl:'templates/guitarString.html',
       restrict: 'E',
@@ -38,21 +39,11 @@ angular.module('newGuitarApp')
         	//BUILD ARRAY OF NOTES
         	scope.newNotes = [];
         	//
+
         	scope.noteSwitch = false;
 
-        	scope.colorChange = function(selNote,selScale){
-        		for(var x=0;x<=selScale.length-1;x++){
-        			if(selNote == selScale[x]){
-        				element.css('background-color',scope.colors[x]);
-        				element.css('color','white');
-        			}
-        		}
 
-
-        	}
-
-
-        	 scope.$watchGroup(['root','notes','newNotes','scale','colors','chord','chcolor'],function(newVal,oldVal){
+        	 scope.$watchGroup(['root','notes','newNotes','scale','colors','chord','chcolor','switched'],function(newVal,oldVal){
       			//WATCH FOR NEW VALUES
       			scope.root = newVal[0];
       			scope.notes = newVal[1];
@@ -61,8 +52,11 @@ angular.module('newGuitarApp')
       			scope.colors = angular.fromJson(newVal[4]);
       			scope.chord = angular.fromJson(newVal[5]);
       			scope.chcolor = newVal[6];
+      			scope.switched = newVal[7];
       			//WATCH FOR NEW VALUES
       			
+      			scope.noteSwitch = scope.switched;
+        	console.log(scope.switched);
 
       			//NEW NOTES
       			scope.note0 = (scope.root + 0) %12,
