@@ -3,6 +3,27 @@ $icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/boots
 @import "bootstrap-sass-official/assets/stylesheets/_bootstrap.scss";
 // endbower
 
+/*Custom google fonts*/
+
+@import url(https://fonts.googleapis.com/css?family=PT+Sans+Narrow);
+
+.ptSans{
+  font-family:'PT Sans Narrow',sans-serif;
+}
+
+
+/**/
+
+/*extra font*/
+
+@import url(https://fonts.googleapis.com/css?family=Crimson+Text);
+
+.crimson {
+  font-family:'Crimson Text',serif;
+}
+
+/**/
+
 .browsehappy {
   margin: 0.2em 0;
   background: #ccc;
@@ -12,7 +33,7 @@ $icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/boots
 
 body {
   padding: 0;
-  background:#D9E6EB;
+  
 }
 
 /* Everything but the jumbotron gets side spacing for mobile first views */
@@ -89,4 +110,21 @@ body {
   .jumbotron {
     border-bottom: 0;
   }
+}
+
+
+
+.scaleSelection{
+  background:#E8E2CF;
+  height:5vh;
+  border:1px none;
+  margin:0.5%;
+  text-align:center;
+  padding:2%;
+}
+.chordSelection {
+  border:1px none;
+  height:5vh;
+  margin-bottom:5%;
+  text-align:center;
 }

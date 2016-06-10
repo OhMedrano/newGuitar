@@ -21,6 +21,14 @@ angular.module('newGuitarApp')
 
     	]
 
+      scope.mobileDisplay = false;
+
+       scope.mobileChange = function(){
+         
+
+        };
+
+
       }
     };
   });

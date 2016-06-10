@@ -40,7 +40,7 @@ angular.module('newGuitarApp')
         	scope.newNotes = [];
         	//
 
-        	scope.noteSwitch = false;
+        	scope.noteSwitch = true;
 
 
         	 scope.$watchGroup(['root','notes','newNotes','scale','colors','chord','chcolor','switched'],function(newVal,oldVal){
@@ -56,7 +56,7 @@ angular.module('newGuitarApp')
       			//WATCH FOR NEW VALUES
       			
       			scope.noteSwitch = scope.switched;
-        	console.log(scope.switched);
+        
 
       			//NEW NOTES
       			scope.note0 = (scope.root + 0) %12,

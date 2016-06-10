@@ -1,19 +1,19 @@
-<div id=''class=''style='' ng-init='musicChange()'>
+<div id=''class=''style=''>
 
 
 		<!-- DESKTOP -->
-		<div id=''class='hidden-sm hidden-xs'style=''>
+		<div id=''class='hidden-sm hidden-xs 'style=''>
 			<div id=''class='col-md-12'style=''>
-				<div id=''class='col-md-1 col-md-offset-2'style='border:1px solid black;'>
+				<div id=''class='col-md-1 col-md-offset-2'style='border:1px none;text-align:center;'>
 					<div id=''class='col-md-12'style=''>
 					  Notation
 
 					</div>
-					<div id=''class='col-md-6'style=''ng-click='musicNotes = musicSharps'>
+					<div id=''class='col-md-6'style='border-right:1px solid black;text-align:left;padding:1%;'ng-click='musicNotes = musicSharps'>
 					Sharps
 
 					</div>
-					<div id=''class='col-md-6'style=''ng-click='musicNotes = musicFlats'>
+					<div id=''class='col-md-6'style='border-left:1px solid black;text-align:center;padding:1%;'ng-click='musicNotes = musicFlats'>
 					Flats
 
 					</div>
@@ -39,31 +39,32 @@
 				</div>
 			</div>
 
-			<div id=''class='col-md-6'style='border:1px solid black;height:60vh;'>
+			<div id=''class='col-md-6'style='border:1px none;height:60vh;'>
 				
-				<div id=''class='col-md-12'style=''>
-					<div ng-click='changeTools = 0'id=''class='col-md-4'style=''>
-					Tunings
+				<div id=''class='col-md-9 col-md-offset-1 crimson
+				 'style='font-size:1.6em;'>
+					<div ng-click='changeTools = 0'id=''class='col-md-4'style='text-align:left'>
+					Scales
 					</div>
-					<div ng-click='changeTools = 1 ;noteSwitched = false'id=''class='col-md-4'style=''>
+					<div ng-click='changeTools = 1 ;noteSwitched = false'id=''class='col-md-4'style='text-align:center;'>
 					Chords
 					</div>
-					<div ng-click='changeTools = 2 ;noteSwitched = true'id=''class='col-md-4'style=''>
-					Scales
+					<div ng-click='changeTools = 2 ;noteSwitched = true'id=''class='col-md-4'style='text-align:right;'>
+					Tuning
 					</div>
 					
 
 				</div>
-				<div ng-if='changeTools == 1'id='changeChord'class='col-md-12'style='position:relative;' ng-model='changeChord(pickedChord,music)'>
+				<div ng-if='changeTools == 1'id='changeChord'class='col-md-12 'style='position:relative;' ng-model='changeChord(pickedChord,music)'>
 
-						<div id=''class='col-md-12'style=''>
-							<div id=''class='col-md-12'style=''>
-								<span class='col-md-6'style='border-bottom:1px solid black;'>
+						<div id=''class='col-md-12 'style='margin-bottom:2%;'>
+							<div id=''class='col-md-12 crimson'style='margin-bottom:1%;'>
+								<span class='col-md-3'style='border-bottom:1px solid black;font-size:1.3em;'>
 								Choose Chord Root: 
 								</span>
 
 							</div>
-							<div ng-repeat='note in musicNotes'id=''class='col-md-1'style=''ng-click='pickToneChord($index)'>
+							<div ng-repeat='note in musicNotes'id=''class='col-md-1 ptSans'style=''ng-click='pickToneChord($index)'>
 							{{note}}
 
 							</div>
@@ -71,16 +72,16 @@
 
 						</div>
 						
-						<div id=''class='col-md-12'style=''>
+						<div id=''class='col-md-12 crimson'style=''>
 							<div id=''class='col-md-12'style='margin-bottom:2%;'>
-								<div id=''class='col-md-6'style='border-bottom:1px solid black;'>
+								<div id=''class='col-md-4'style='border-bottom:1px solid black;font-size:1.5em;'>
 								Choose chord:
 
 								</div>
 
 							</div>
 							<div id=''class='col-md-12'style='overflow:auto;'>
-								<div ng-repeat='chord in musicChords'id=''class='col-md-3 col-md-offset-1'style='border:1px none;height:5vh;margin-bottom:5%;text-align:center;background-color:{{chord.color}}'ng-click='pickChord(chord)'>
+								<div ng-repeat='chord in musicChords'id=''class='col-md-3 col-md-offset-1 chordSelection'style='background-color:{{chord.color}}'ng-click='pickChord(chord)'>
 									<h3>{{chord.name}}</h3>
 
 								</div>
@@ -98,10 +99,10 @@
 
 
 
-				<div ng-if='changeTools == 2'id='changeScale'class='col-md-12'style='padding:4%;'ng-model='changeScale(pickedScale,musicRoot)'>
-						<div id=''class='col-md-12'style='padding:2%;border-bottom:1px solid black;'>
+				<div ng-if='changeTools == 0'id='changeScale'class='col-md-12'style='padding:4%;'ng-model='changeScale(pickedScale,musicRoot)'>
+						<div id=''class='col-md-12 'style='padding:2%;border-bottom:1px solid black;'>
 							
-							<div ng-repeat='note in musicNotes'id=''class='col-md-1'style=''ng-click='pickTone($index)'>
+							<div ng-repeat='note in musicNotes'id=''class='col-md-1 ptSans'style='font-size:1.3em;'ng-click='pickTone($index)'>
 							{{note}}
 
 
@@ -110,10 +111,13 @@
 
 						</div>
 
-						<div id=''class='col-md-12'style='height:100%;overflow:auto;'>
+						<div id=''class='col-md-10 col-md-offset-2'style='height:100%;overflow:auto;'>
+							<div id=''class='col-md-12'style='padding:1%;'>
+
+
+							</div>
 						
-						
-							<div ng-repeat='scale in allScale'id=''class='col-md-3'style='height:5vh;border:1px solid black;margin:0.5%;text-align:center;'ng-click='pickScale(scale)'>
+							<div ng-repeat='scale in allScale'id=''class='col-md-3 ptSans scaleSelection'style=''ng-click='pickScale(scale)'>
 							{{scale.name}}
 
 							</div>
@@ -123,15 +127,15 @@
 
 
 				</div>
-				<div ng-if='changeTools == 0'id='changeString'class='col-md-12'style='border:1px none;height:100%;'>
+				<div ng-if='changeTools == 2'id='changeString'class='col-md-12'style='border:1px none;height:90%;'>
 					<div id=''class=''style='height:100%;'>
-					<div id=''class='col-md-12'style=''>
-						<div ng-click='changeRoots = 0'id=''class='col-md-3'style=''>
+					<div id=''class='col-md-6 col-md-offset-3 crimson'style='margin-bottom:2%;font-size:1.3em;position:absolute;z-index:1;top:2%;'>
+						<div ng-click='changeRoots = 0'id=''class='col-md-5'style='float:left;text-align:left;border-bottom:1px solid black;'>
 						Individually
 
 
 						</div>
-						<div ng-click='changeRoots = 1'id=''class='col-md-3'style=''>
+						<div ng-click='changeRoots = 1'id=''class='col-md-5'style='float:right;text-align:right;border-bottom:1px solid black;'>
 						Alternate Tunings
 
 
@@ -139,37 +143,63 @@
 						
 					</div>
 
-					<div ng-if='changeRoots == 0'id=''ng-repeat='string in strings track by $index'class=''style=''ng-init='order = $index'>
-							<!-- <div id=''class='col-md-2'style=''>
-								<div id=''class='col-md-4'style=''>
-									{{musicNotes[string]}}
-								</div>
-								<div id=''class='col-md-6'style=''>
-								<span class='col-md-1 glyphicon glyphicon-chevron-down'> </span>
-								<span class='col-md-1 glyphicon glyphicon-chevron-down'> </span>
+					<div ng-if='changeRoots == 0'id=''ng-repeat='string in strings track by $index'class='col-md-12'style='position:relative;top:10%;'ng-init='order = $index'>
+				
+						
+							<div id=''class='col-md-4'style='border:1px none;height:5vh;'>
+								<div id=''class='col-md-10 crimson'style='border:1px none;height:100%;padding:3%;font-size:1.2em;'>
+								{{stringName[$index]}} string is tuned to:
+
 								</div>
 
-							</div> -->
-						<div id=''class='col-md-12'style='border-bottom:1px solid black;'>
-						String {{$index+1}} is {{musicNotes[string]}}
-						</div>
+								<div id=''class='col-md-1 ptSans'style='float:right;border:1px none;height:100%;padding:3%;text-align:center;'>
 
-						<div id=''class='col-md-12'style=''>
-							<div ng-click='changeNote(order,note)'ng-repeat='note in musicNotes'id=''class='col-md-1'style=''>
+								{{musicNotes[string]}}
+								</div>
+
+
+							</div>
+
+							<div id=''class='col-md-8 ptSans'style='border:1px none;height:5vh;padding-top:1%;'>
+								
+								<div ng-repeat='note in musicNotes'id=''class='col-md-1'style=';text-align:center;padding:0.3%;'>
+									<div id=''class='col-md-6'style='background:#E8E2CF;float:left;padding-right:26px;'ng-click='changeNote(order,note)'>
+										{{note}}
+
+									</div>
+
+
+
+
+								</div>
+
+
+
+
+							</div>
+
+
+
+
+
+						<!-- <div id=''class='col-md-12'style=''>
+							<div ng-click='changeNote(order,note)'ng-repeat='note in musicNotes'id=''class='col-md-1 ptSans'style=''>
 							{{note}}
 
 							</div>
 						</div>
-
+ -->
 					</div>
 
-					<div ng-if='changeRoots == 1'ng-repeat='tune in tunings'id=''class='col-md-3'style='height:auto;margin-bottom:2%;'>
-						<div ng-click='changeGroup(tune.forumla)'id=''class='col-md-12'style='border:1px solid black;
-						height:10vh;'>
+					<div ng-if='changeRoots == 1'id=''class='col-md-12'style='height:100%;margin-bottom:2%;top:10%;position:relative;overflow:y;'>	
+						<div id=''class='col-md-10 col-md-offset-2'style='overflow:auto;height:100%;'>
+						<div ng-repeat='tune in tunings'ng-click='changeGroup(tune.forumla)'id=''class='col-md-3 scaleSelection ptSans'style='
+						'>
 						{{tune.name}}
 
 						</div>
 
+</div>
 
 					</div>
 
@@ -180,12 +210,37 @@
 				</div>
 
 
-				<div id=''class='col-md-6'style='border:1px solid black;height:60vh;'>
-					<div id=''class='col-md-10'style=''>
+				<div id=''class='col-md-6 crimson'style='border:1px none;height:60vh;'>
+					<div id=''class='col-md-12'style=''>
 
-						<div id=''class='col-md-12'style='border-bottom:1px solid black;'>
+
+
+
+
+					</div>
+
+					<div id=''class=''style='height:60%;border:1px none;'>
+					
+					
+					
+					
+					<div id=''class='col-md-10'style='height:60%;border:1px none;'>
+						<div id=''class='col-md-12'style='font-size:1.4em;'>
+						<div id=''class='col-md-4'style=''ng-click='emptyDatSon(true)'>
+						Reset Scales
+
+						</div>
+						<div id=''class='col-md-4'style='float:right;'ng-click='emptyDatSon(false)'>
+						Reset Chords
+
+						</div>
+
+
+
+						</div>
+						<div id=''class='col-md-12'style='border-bottom:1px solid black;font-size:1.3em'>
 						This scale is called {{musicNotes[musicRoot]}} {{scaleName}} <br>
-						And uses:  {{scaleColors}}
+						And uses:  
 
 						</div>
 						<div ng-repeat='name in scaleInterNames' id=''class='col-md-4'style=''>
@@ -199,7 +254,7 @@
 					</div>
 
 					<div id=''class='col-md-10'style=''>
-						<div id=''class='col-md-12'style=''>
+						<div id=''class='col-md-12'style='font-size:1.3em;border-bottom:1px solid black;'>
 						This chord is called {{musicNotes[music]}} {{chordName}} 
 						<br>
 						And uses
@@ -226,7 +281,53 @@
 
 
 					</div>
+					</div>
+					
+					<div id=''class='col-md-12'style='border:1px none;height:40%;'ng-init='etcSwitch = false'>
+						<div id=''class='col-md-2'style='font-size:1.4em;padding-top:10%;'>	{{etcSwitch}}
+							<div id=''class=''style='text-align:right;'ng-click='etcSwitch = false'>
+								How to use						
+							</div>
+							<div id=''class=''style='text-align:right;'ng-click='etcSwitch = true'>
+								Why I made it							
+							</div>
 
+						</div>
+						<div  id=''class='col-md-10'style='border-left:1px solid black;height:100%;overflow:auto;'>
+							<div ng-if='etcSwitch == false'id=''class='col-md-12'style='font-size:1.3em;'>
+							<ul style='list-style:none;'><span style='border-bottom:1px solid black;'>Scales / Chords:</span>
+								<li>Pick a root note. (C is default)</li>
+								<li>Select a scale or chord</li>
+							</ul>
+
+							<ul style='list-style:none;'><span style='border-bottom:1px solid black;'>Tuning:</span>
+								<li>Pick a note for each string</li>
+								<li> or</li>
+								<li>Choose an alternate tuning</li>
+
+							</ul>
+
+
+
+							</div>
+							
+							<div ng-if='etcSwitch == true'id=''class='col-md-12'style='font-size:1.4em;'>
+								Lots of new guitarists and pros get lost looking at a fretboard, especially when dealing with new tunings. 
+								<br>
+								So I wanted to do a project that will clear the confusion of the fretboard.
+								<br> 
+								This is version 2 of the original project.
+								<br>
+								BTW for you theory guys, I added the notation switch up top.
+
+
+
+							
+							</div>
+
+
+						</div>
+					</div>
 
 
 
@@ -237,9 +338,90 @@
 		</div>
 
 		<!-- MOBILE -->
-		<div id=''class='hidden-md hidden-lg'style=''>
+		<div id=''class='hidden-md hidden-lg'style='position:relative;'>
+			<div id=''class='col-xs-10 col-xs-offset-1'style='border:1px solid black;height:338vh;background:url({{fretboard[2]}})no-repeat;background-size:cover;position:relative;z-index:1;'>
 
 
+
+
+			</div>
+			<div id=''class='col-xs-1 crimson'style='height:28vh;position:absolute;top:30vh;z-index:2;background:white;border-right:3px solid black;border-bottom:3px solid black;border-top:3px solid black;left:0;text-align:center;'
+			ng-click='mobileScale()'>
+				S<br>C<br>A<br>L<br>E<br>S
+			
+			
+			</div>
+
+			<div id=''class='col-xs-1 crimson'style='height:28vh;position:absolute;top:30vh;z-index:2;background:white;border-left:3px solid black;border-bottom:3px solid black;border-top:3px solid black;right:0;text-align:center;'
+			ng-click='mobileFret()'>
+				T<br>U<br>N<br>I<br>N<br>G
+			
+			
+			</div>
+
+			<div ng-if='mobileFretString == true'id=''class='col-xs-12'style='height:auto;border-bottom:3px solid black;border-top:3px solid black;overflow:auto;position:absolute;top:30vh;z-index:2;background:white;'>
+				<div id=''class='col-xs-12'style='height:50%;border:1px none;margin-bottom:3%;'>
+					
+					<div id=''class='col-xs-4'style='border:1px none;float:right;margin-bottom:4%;'ng-click='mobileFret()'>
+					<span class='glyphicon glyphicon-forward'></span>
+					<span class='glyphicon glyphicon-forward'></span>
+					<span class='glyphicon glyphicon-forward'></span>
+					</div>
+					<div id=''class='col-xs-12 crimson'style='text-align:center;'>
+						<div id=''class='col-xs-6'style='border-right:1px solid black;border-bottom:1px solid black;'ng-click='mobileStringSwitch = false'>
+							Individual
+						
+						
+						</div>
+						<div id=''class='col-xs-6'style='border-bottom:1px solid black;'ng-click='mobileStringSwitch = true'>
+						Group
+						
+						
+						</div>
+					
+					
+					</div>
+
+				</div>
+				<div ng-if='mobileStringSwitch == false' id=''class='col-xs-12'style='margin-bottom:2%;'>
+					<div ng-repeat='string in strings track by $index'id=''class='col-xs-12'style=''ng-init='stuff = $index'>
+						<span class='col-xs-6'>{{stringName[$index]}}</span>
+					
+						<div class="dropdown col-xs-3">
+ 						 <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+  						  {{musicNotes[string]}}
+  						  <span class="caret"></span>
+ 						 </button>
+ 							 <div class="dropdown-menu" aria-labelledby="dropdownMenu1">
+    							<div ng-repeat='note in musicNotes'id=''class='col-xs-4'style='font-size:1.4em;'ng-click='changeNote(stuff,note)'>
+    								{{note}}
+    							
+    							
+    							</div>
+ 							 </div>
+							</div>
+					</div>
+
+
+
+				</div>
+				<div ng-if='mobileStringSwitch == true'id=''class='col-xs-12'style='margin-bottom:2%;overflow:auto;height:42vh;'>
+					<div ng-repeat='tune in tunings track by $index'id=''class='col-xs-8 col-xs-offset-2 ptSans'style='height:5vh;border-bottom:1px solid black;margin-bottom:2%;padding:2%;text-align:center;'>
+					{{tune.name}}
+				
+				
+					</div>
+
+
+
+
+
+
+
+				</div>
+			
+			
+			</div>
 
 
 

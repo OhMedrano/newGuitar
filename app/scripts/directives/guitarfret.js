@@ -22,15 +22,26 @@ angular.module('newGuitarApp')
       		scope.musicNotes = scope.musicFlats;
       		scope.music = 3;
       		scope.musicRoot = 3; //Starts off at C
-      		
+      		scope.stringName = ['Top E','B','G','D','A','Bottom E'];
 
       		//MUSIC NOTES
 
       		//VARIABLES FOR DISPLAY PURPOSES
       		scope.changeTools = 0;
       		scope.changeRoots = 0;
-                  scope.noteSwitched = false;
+                  scope.noteSwitched = true;
+                  scope.mobileStringSwitch = true;
+                  scope.mobileFretString = false;
+                  scope.mobileFretScale = false;
+                  scope.mobileFretChord = false;
 
+
+                  scope.mobileFret = function(){
+                        scope.mobileFretString = !scope.mobileFretString;
+                  }
+                  scope.mobileScale = function(){
+                        scope.mobileFretScale = !scope.mobileFretScale;
+                  }
 
       		//VARIABLES FOR DISPLAY PURPOSES
 
@@ -260,10 +271,22 @@ angular.module('newGuitarApp')
 
       		};
       		//!!!FUNCTION!!!
+                  //!!!FUNCTION!!!
+                  //Clearing scales and chords array
+                  scope.emptyDatSon = function(yeah){
+                  //I couldn't think of a name... 
+                      
+                       if(!yeah){
+                        scope.currentChord = [];
+                        scope.pickedChord = [];
+                       } else {
+                        scope.currentScale = [];
+                        scope.pickedScale = [];
+                       }
 
+                  };
 
-
-
+                  //!!!FUNCTION!!!
       		//!!!FUNCTION!!!WATCH GROUP 
       		//It watches for scope changes.
       		scope.$watchGroup(['strings','stringE','stringB','stringG','stringD','stringA','stringEe'],function(newVal,oldVal){

@@ -32,9 +32,37 @@
 
 	<!-- MOBILE DISPLAY -->
 
-		<div id=''class='hidden-md hidden-lg col-xs-12'style='border-bottom:1px solid black;'>
-	
+		<div id=''class='hidden-md hidden-lg col-xs-12 crimson'style='border-bottom:1px solid black;' >
+			
+		<a ng-href='http://theBigOh.net'class='col-xs-6'><div id='headerLogo'style=''>
+			<img src='images/theBigOh.png'style='height:13vh;width:100%;'/>
 
+		</div></a>
+
+		<div id='headerNav'class='col-xs-6'style='height:13vh;border:1px none;'>
+			<div id=''class='glyphicon glyphicon-align-justify'style='height:100%;padding-top:10%;font-size:1.2em;'ng-click='mobileDisplay = !mobileDisplay'>
+			
+				Menu
+			
+			</div>
+			
+
+		</div>
+		<div ng-if='mobileDisplay == true;'id=''class='col-xs-8'style='float:right;'>
+		 	<div ng-repeat='tool in tools'id=''class=''style=''>
+		 		<div id=''class='col-xs-12'style='border-bottom:1px solid black;padding:0'>
+		 			<a ng-href='{{tool.link}}'style='color:black;font-size:1.1em;'>	
+		 			{{tool.name}}
+		 			</a>
+		 		
+		 		
+		 		</div>
+		 	
+		 	
+		 	</div>
+		
+		
+		</div>
 
 		</div>
 

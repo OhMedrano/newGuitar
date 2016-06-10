@@ -39,7 +39,7 @@ angular.module('newGuitarApp')
         		scope.color = newVal[0];
         		scope.note = newVal[1];
         		scope.chord = angular.fromJson(newVal[2]);
-        		console.log(scope.note, scope.chord,scope.color);
+        	
         		scope.colorChange(scope.note,scope.chord);
         	});
       }
