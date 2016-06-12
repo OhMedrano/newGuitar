@@ -43,13 +43,13 @@
 				
 				<div id=''class='col-md-9 col-md-offset-1 crimson
 				 'style='font-size:1.6em;'>
-					<div ng-click='changeTools = 0'id=''class='col-md-4'style='text-align:left'>
+					<div ng-click='changeTools = 0;noteSwitched = true'id=''class='col-md-4'style='text-align:left'>
 					Scales
 					</div>
 					<div ng-click='changeTools = 1 ;noteSwitched = false'id=''class='col-md-4'style='text-align:center;'>
 					Chords
 					</div>
-					<div ng-click='changeTools = 2 ;noteSwitched = true'id=''class='col-md-4'style='text-align:right;'>
+					<div ng-click='changeTools = 2 ;'id=''class='col-md-4'style='text-align:right;'>
 					Tuning
 					</div>
 					
@@ -226,11 +226,11 @@
 					
 					<div id=''class='col-md-10'style='height:60%;border:1px none;'>
 						<div id=''class='col-md-12'style='font-size:1.4em;'>
-						<div id=''class='col-md-4'style=''ng-click='emptyDatSon(true)'>
+						<div ng-init='scaleEmpty = true'id=''class='col-md-4'style=''ng-click='emptyDatSon(scaleEmpty)'>
 						Reset Scales
 
 						</div>
-						<div id=''class='col-md-4'style='float:right;'ng-click='emptyDatSon(false)'>
+						<div ng-init='chordEmpty = false'id=''class='col-md-4'style='float:right;'ng-click='emptyDatSon(chordEmpty)'>
 						Reset Chords
 
 						</div>
@@ -284,7 +284,7 @@
 					</div>
 					
 					<div id=''class='col-md-12'style='border:1px none;height:40%;'ng-init='etcSwitch = false'>
-						<div id=''class='col-md-2'style='font-size:1.4em;padding-top:10%;'>	{{etcSwitch}}
+						<div id=''class='col-md-2'style='font-size:1.4em;padding-top:10%;'>	
 							<div id=''class=''style='text-align:right;'ng-click='etcSwitch = false'>
 								How to use						
 							</div>
@@ -316,7 +316,7 @@
 								<br>
 								So I wanted to do a project that will clear the confusion of the fretboard.
 								<br> 
-								This is version 2 of the original project.
+								This is version 3 of the original project.
 								<br>
 								BTW for you theory guys, I added the notation switch up top.
 
@@ -338,13 +338,26 @@
 		</div>
 
 		<!-- MOBILE -->
-		<div id=''class='hidden-md hidden-lg'style='position:relative;'>
-			<div id=''class='col-xs-10 col-xs-offset-1'style='border:1px solid black;height:338vh;background:url({{fretboard[2]}})no-repeat;background-size:cover;position:relative;z-index:1;'>
+		<div id=''class='hidden-md hidden-lg'style='position:relative;overflow:y'ng-model='changeScale(pickedScale,musicRoot);changeChord(pickedChord,music)'>
+			<div id=''class='col-xs-10 col-xs-offset-1'style='height:390vh;background:url({{fretboard[2]}})no-repeat;background-size:cover;position:relative;z-index:1;padding:0;'>
 
-
+			<mobile-String switched='noteSwitched'chord='{{currentChord}}'chcolor='{{chordColors}}'colors='{{scaleColors}}'scale='{{currentScale}}'notes='musicNotes'root='strings[0]'class='col-xs-2' style=''></mobile-String>
+			<mobile-String switched='noteSwitched'chord='{{currentChord}}'chcolor='{{chordColors}}'colors='{{scaleColors}}'scale='{{currentScale}}'notes='musicNotes'root='strings[1]'class='col-xs-2' style=''></mobile-String>
+			<mobile-String switched='noteSwitched'chord='{{currentChord}}'chcolor='{{chordColors}}'colors='{{scaleColors}}'scale='{{currentScale}}'notes='musicNotes'root='strings[2]'class='col-xs-2' style=''></mobile-String>
+			<mobile-String switched='noteSwitched'chord='{{currentChord}}'chcolor='{{chordColors}}'colors='{{scaleColors}}'scale='{{currentScale}}'notes='musicNotes'root='strings[3]'class='col-xs-2' style=''></mobile-String>
+			<mobile-String switched='noteSwitched'chord='{{currentChord}}'chcolor='{{chordColors}}'colors='{{scaleColors}}'scale='{{currentScale}}'notes='musicNotes'root='strings[4]'class='col-xs-2' style=''></mobile-String>
+			<mobile-String switched='noteSwitched'chord='{{currentChord}}'chcolor='{{chordColors}}'colors='{{scaleColors}}'scale='{{currentScale}}'notes='musicNotes'root='strings[5]'class='col-xs-2' style=''></mobile-String>
 
 
 			</div>
+			<div id=''class='col-xs-1 crimson'style='height:28vh;position:absolute;top:60vh;z-index:2;background:white;border-right:3px solid black;border-bottom:3px solid black;border-top:3px solid black;left:0;text-align:center;'
+			ng-click='mobileChord()'>
+				C<br>H<br>O<br>R<br>D<br>S
+			
+			
+			</div>
+
+
 			<div id=''class='col-xs-1 crimson'style='height:28vh;position:absolute;top:30vh;z-index:2;background:white;border-right:3px solid black;border-bottom:3px solid black;border-top:3px solid black;left:0;text-align:center;'
 			ng-click='mobileScale()'>
 				S<br>C<br>A<br>L<br>E<br>S
@@ -358,8 +371,107 @@
 			
 			
 			</div>
+			<div ng-if='mobileFretChord == true' id=''class='col-xs-12'style='height:auto;border-bottom:3px solid black;border-top:3px solid black;position:absolute;top:30vh;z-index:2;background:white;'>
+				<div id=''class='col-xs-12'style='height:50%;margin-bottom:4%;'>
+					<div id=''class='col-xs-4'style='float:left;'ng-click='mobileChord()'>
+						<span class='glyphicon glyphicon-backward'></span>
+					<span class='glyphicon glyphicon-backward'></span>
+					<span class='glyphicon glyphicon-backward'></span>					
+					
+					
+					</div>
+					<div id=''class='col-xs-12'style='border-bottom:1px solid black;'>
+						<div id=''class='col-xs-3'style=''>
+						Current Chord:
+						
+						</div> 	
 
-			<div ng-if='mobileFretString == true'id=''class='col-xs-12'style='height:auto;border-bottom:3px solid black;border-top:3px solid black;overflow:auto;position:absolute;top:30vh;z-index:2;background:white;'>
+
+						<div class="dropdown col-xs-4">
+ 						 <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+  						  {{musicNotes[music]}}
+  						  <span class="caret"></span>
+ 						 </button>
+ 							 <div class="dropdown-menu" aria-labelledby="dropdownMenu1">
+    							<div ng-repeat='note in musicNotes'id=''class='col-xs-4'style='font-size:1.4em;'ng-click='pickToneChord($index)'>
+    								{{note}}
+    							
+    							
+    							</div>
+ 							 </div>
+							</div>
+						
+						<div class="dropdown col-xs-4 ptSans">
+ 						 <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+  						  {{chordName}}
+  						  <span class="caret"></span>
+ 						 </button>
+ 							 <div class="dropdown-menu" aria-labelledby="dropdownMenu1">
+    							<div ng-repeat='chord in musicChords'id=''class='col-xs-12'style='font-size:1.4em;'ng-click='pickChord(chord)'>
+    								{{chord.name}}
+    							
+    							
+    							</div>
+ 							 </div>
+							</div>
+					</div>
+					
+									
+					</div>				
+				</div>
+			
+			</div>
+			<div ng-if='mobileFretScale == true' id=''class='col-xs-12'style='height:auto;border-bottom:3px solid black;border-top:3px solid black;position:absolute;top:30vh;z-index:2;background:white;'>
+				<div id=''class='col-xs-12'style='height:50%;margin-bottom:4%;'>
+					<div id=''class='col-xs-4'style='float:left;'ng-click='mobileScale()'>
+						<span class='glyphicon glyphicon-backward'></span>
+					<span class='glyphicon glyphicon-backward'></span>
+					<span class='glyphicon glyphicon-backward'></span>					
+					
+					
+					</div>
+					<div id=''class='col-xs-12'style='border-bottom:1px solid black;'>
+						<div id=''class='col-xs-3'style=''>
+						Current Scale:
+						
+						</div> 	
+
+
+						<div class="dropdown col-xs-4">
+ 						 <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+  						  {{musicNotes[musicRoot]}}
+  						  <span class="caret"></span>
+ 						 </button>
+ 							 <div class="dropdown-menu" aria-labelledby="dropdownMenu1">
+    							<div ng-repeat='note in musicNotes'id=''class='col-xs-4'style='font-size:1.4em;'ng-click='pickTone($index)'>
+    								{{note}}
+    							
+    							
+    							</div>
+ 							 </div>
+							</div>
+						
+						<div class="dropdown col-xs-4 ptSans">
+ 						 <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+  						  {{scaleName}}
+  						  <span class="caret"></span>
+ 						 </button>
+ 							 <div class="dropdown-menu" aria-labelledby="dropdownMenu1">
+    							<div ng-repeat='scale in allScale'id=''class='col-xs-12'style='font-size:1.4em;'ng-click='pickScale(scale)'>
+    								{{scale.name}}
+    							
+    							
+    							</div>
+ 							 </div>
+							</div>
+					</div>
+					
+									
+					</div>				
+				</div>
+			
+			</div>
+			<div ng-if='mobileFretString == true'id=''class='col-xs-12'style='height:auto;border-bottom:3px solid black;border-top:3px solid black;position:absolute;top:30vh;z-index:2;background:white;'>
 				<div id=''class='col-xs-12'style='height:50%;border:1px none;margin-bottom:3%;'>
 					
 					<div id=''class='col-xs-4'style='border:1px none;float:right;margin-bottom:4%;'ng-click='mobileFret()'>
@@ -387,13 +499,13 @@
 					<div ng-repeat='string in strings track by $index'id=''class='col-xs-12'style=''ng-init='stuff = $index'>
 						<span class='col-xs-6'>{{stringName[$index]}}</span>
 					
-						<div class="dropdown col-xs-3">
+						<div class="dropdown col-xs-3"style='position:static;z-index:20'>
  						 <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
   						  {{musicNotes[string]}}
   						  <span class="caret"></span>
  						 </button>
  							 <div class="dropdown-menu" aria-labelledby="dropdownMenu1">
-    							<div ng-repeat='note in musicNotes'id=''class='col-xs-4'style='font-size:1.4em;'ng-click='changeNote(stuff,note)'>
+    							<div ng-repeat='note in musicNotes'id=''class='col-xs-4'style='font-size:1.4em;position:relative;z-index:20;'ng-click='changeNote(stuff,note)'>
     								{{note}}
     							
     							
@@ -406,7 +518,7 @@
 
 				</div>
 				<div ng-if='mobileStringSwitch == true'id=''class='col-xs-12'style='margin-bottom:2%;overflow:auto;height:42vh;'>
-					<div ng-repeat='tune in tunings track by $index'id=''class='col-xs-8 col-xs-offset-2 ptSans'style='height:5vh;border-bottom:1px solid black;margin-bottom:2%;padding:2%;text-align:center;'>
+					<div ng-repeat='tune in tunings track by $index'id=''class='col-xs-8 col-xs-offset-2 ptSans'style='height:5vh;border-bottom:1px solid black;margin-bottom:2%;padding:2%;text-align:center;'ng-click='changeGroup(tune.forumla);'>
 					{{tune.name}}
 				
 				

@@ -38,9 +38,17 @@ angular.module('newGuitarApp')
 
                   scope.mobileFret = function(){
                         scope.mobileFretString = !scope.mobileFretString;
+
                   }
                   scope.mobileScale = function(){
                         scope.mobileFretScale = !scope.mobileFretScale;
+                        scope.noteSwitched = true;
+                        scope.mobileFretChord = false;
+                  }
+                   scope.mobileChord = function(){
+                        scope.mobileFretChord = !scope.mobileFretChord;
+                        scope.noteSwitched = false;
+                        scope.mobileFretScale = false;
                   }
 
       		//VARIABLES FOR DISPLAY PURPOSES
@@ -86,8 +94,19 @@ angular.module('newGuitarApp')
       						        {"name":"Minor Blues","scale":[0,3,5,6,7,10]},
       						        {"name":"Harmonic Minor","scale":[0,2,3,5,7,8,11]},
       						        {"name":"Melodic Minor","scale":[0,2,3,5,7,9,11]},
-      						        {"name":"Diminished / 8-Tone","scale":[0,2,3,5,6,8,11]}
-      						];
+      						        {"name":"Diminished / 8-Tone","scale":[0,2,3,5,6,8,11]},
+                                                  {"name":"Persian","scale":[0,1,4,5,6,8,10]},
+                                                  {"name":"Hirajoshi","scale":[0,2,3,7,8]},
+                                                  {"name":"Kumoi","scale":[0,2,3,7,9]},
+                                                  {"name":"Chinese","scale":[0,4,6,7,11]},
+                                                  {"name":"Egyptian","scale":[0,2,5,7,10]},
+                                                  {"name":"Hungarian Gypsy","scale":[0,1,4,7,9]},
+                                                  {"name":"Romanian","scale":[0,2,3,6,7,9,10]},
+                                                  {"name":"Neopolitan Minor","scale":[0,1,3,5,7,8,11]},
+                                                  {"name":"Neopolitan Major","scale":[0,1,4,6,7,8,10]},
+                                                  {"name":"Prometheus","scale":[0,2,4,6,10]},
+                                                  {"name":"Ritusen","scale":[0,2,5,7,9]}
+      						];                                                                      
       		//current Scale set for Major Scale
       		scope.currentScale = scope.allScale[0].scale;
       		scope.pickedScale = [];
