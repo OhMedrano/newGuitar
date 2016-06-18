@@ -3,24 +3,24 @@ $icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/boots
 @import "bootstrap-sass-official/assets/stylesheets/_bootstrap.scss";
 // endbower
 
-/*Custom google fonts*/
+/*Custom google fonts MAIN*/
 
-@import url(https://fonts.googleapis.com/css?family=PT+Sans+Narrow);
+@import url(https://fonts.googleapis.com/css?family=PT+Sans+Narrow|Crimson+Text);
 
 .ptSans{
   font-family:'PT Sans Narrow',sans-serif;
 }
-
-
-/**/
-
-/*extra font*/
-
-@import url(https://fonts.googleapis.com/css?family=Crimson+Text);
-
 .crimson {
   font-family:'Crimson Text',serif;
 }
+
+/**/
+
+/*extra font ANY EXPERIMENTAL FONTS HERE*/
+
+
+
+
 
 /**/
 
@@ -111,9 +111,32 @@ body {
     border-bottom: 0;
   }
 }
+.fretThird {
+  height:100%;position:relative;
+  bottom:100%;
+}
+.fretQuart {
+  height:100%;position:relative;
+  bottom:200%;
+}
+.harmDesk {
+  height:100%;
 
-
-
+  .harmQuartDesk{
+    border-right:3px solid green;
+    height:100%;
+  }
+}
+.harmHead {
+  border-bottom:1px solid black;
+  font-size:1.3em;
+  text-align:right;
+  padding:0;
+}
+.selected{
+  background-color:#000000;
+  color:white;
+}
 .scaleSelection{
   background:#E8E2CF;
   height:5vh;

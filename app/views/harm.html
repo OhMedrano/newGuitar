@@ -1,9 +1,109 @@
 <div id=''class=''style=''>
 
 	<!-- DESKTOP -->
-	<div id=''class='hidden-sm hidden-xs'style=''>
+	<div id=''class='hidden-sm hidden-xs col-md-12'style='padding:0;'>
 		
-			<harm-Guitar></harm-Guitar>
+			<harm-Guitar ratio='{{selRatio}}'start='{{selFret}}'></harm-Guitar>
+
+			<div id=''class='col-md-12'style='border:1px none;height:28vh;'>
+				
+				<div id=''class='col-md-6'style='border:1px none;height:100%;'>
+					
+					<div  id=''class='col-md-6'style='float:right;'>
+						<div id=''class='col-md-12 crimson harmHead'style=''>
+							Select Fret:
+						
+						</div>
+						<div ng-init='fre = $index'ng-repeat='fret in fretLength'id=''class='col-md-2 ptSans'style='height:4vh;border-bottom:1px solid black;padding:2%;margin:1%;text-align:center;'ng-click='changeFret($index);'ng-class='{selected:$index === selFretId}'>
+							{{fre}}
+										
+										
+						</div>				
+						
+					</div>
+				
+				</div>
+				<div id=''class='col-md-6'style='border:1px none;height:100%;overflow:auto;'>
+				
+					<div id=''class='col-md-3 crimson'style='float:left;border:1px none'>
+						<div id=''class='col-md-12 crimson harmHead'style='font-size:1.3em;border-bottom:1px solid black;padding:0;text-align:right;'>
+							Select Ratio
+						
+						</div>
+						<div ng-repeat='ratio in fretRatioNames'id=''class='col-md-12'style='position:relative;border-bottom:1px none;height:4vh;margin:1%;padding-top:3%;padding:0;'ng-click='changeRatio($index);'>
+							<div id=''class='col-md-3'style='float:left;height:100%;border-bottom:1px none;background-color:{{ratio.color}}'>
+							
+							
+							</div>
+							<div id=''class='col-md-9'style='border-bottom:1px solid black;height:100%;text-align:left;padding:2%;position:relative;'ng-class='{selected:$index === selRatioId}'>
+								<span style='position:relative;top:50%;;'>{{ratio.name}}</span>
+							
+							</div>
+
+						
+						</div>
+							
+					
+					</div>
+					<div id=''class='col-md-9'style='overflow:hidden;border:1px none;height:90%;'>
+						<div id=''class='col-md-12 crimson'style='' ng-init='harmControlSwitch = false;'>
+							<div id=''class='col-md-5 harmHead'style='' ng-click='harmControlSwitch = true'>
+								How to use it
+							
+							</div>
+							<div id=''class='col-md-6 col-md-offset-1 harmHead'style='' ng-click='harmControlSwitch = false'>
+								The theory behind it
+							
+							</div>
+							
+						
+						</div>
+						<div id=''class='col-md-12'style='overflow:auto;padding:2%;height:100%;'>
+							<div ng-if='harmControlSwitch == true' id=''class='col-md-12 crimson'style='overflow:auto;font-size:1.2em;'>
+								<h3 style='border-bottom:1px solid black;'>Step 1: Pick a string division.</h3>
+			
+				
+								<p>Pick out which overtone you want using the box labeled "Select Division"</p><p> This works by dividing the string evenly.</p><p>Try out different divisions to make those notes squeal.</p>
+								<br></br>
+								<h3 style='border-bottom:1px solid black;'>Step 2: Pick what fret you want to see the sweet spots for.</h3>
+								<p> Choose which fret you want to see the harmonic sweet spots for.</p><p> If you want to check the sweet spots for the 7th fret, then hit 7 on that number pad up there. </p>
+								<br></br>
+
+							<h3 style='border-bottom:1px solid black;'>Step 3: Pluck the sweet spot indicated by the color bar.</h3>
+							<p>The area where that color bar is over, is the sweet spot.</p>
+							<p>Pick that area to get that guitar to sing.</p>
+
+							<br>
+							<h3 style='border-bottom:1px solid black'>Tips</h3>
+							<p>Try picking the string with your thumb slightly digging into the string.</p>
+							<p>Do it in one swift motion, you'll know if you got it right when you hear a higher pitched note than if it was plucked as usual.</p>
+							<p>Try playing Danzig's "The Revengeful".</p>
+						</div>
+						<div ng-if='harmControlSwitch == false' id=''class='col-md-12 crimson'style='text-align:left;font-size:1.2em;'>
+							 <p>When you're playing a harmonic, any harmonic, you are actually playing a string at its perfect division. At its perfect ratio so to say.</p>
+
+							<p>Take for example the natural harmonics, the ones you play over the 12th fret. The area where you place your finger for that harmonic is actually the perfect / near perfect half of the whole string.</p>
+
+							<p>You can use the same example for the 5th and 7th fret harmonics since they divide the string into 3rds and 4ths respectfully.</p>
+
+							<p>We'll call these perfect divisions "Nodes". So if you're dividing a string in half, you'll have one node aka the natural harmonic on the 12th fret. By 3rds? The node will be on the 5th fret. You get the picture.</p>
+
+							<p>Pinch harmonics works in a simliar way; instead of going the full string distance (Nut to Bridge), you'll be measuring from a variable distance (Finger to bridge) AND pluck that harmonic.</p>
+
+							<p>For example, if you were on the placing your finger on the 9th fret, you'll be measuring the distance from your finger to the bridge; making the node for the HALF the length of the string around the area where the 20th fret is located.</p>
+
+							
+						</div>
+						
+						</div>
+
+					
+					</div>
+				
+				</div>
+				
+			</div>
+
 	</div>
 
 	<!-- MOBILE -->

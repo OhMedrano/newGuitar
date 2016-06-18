@@ -1,33 +1,38 @@
-<div id=''class='col-md-12'style='border:1px solid black;'ng-init='fretRatio = 1;'>
+<div id=''class=''style=''>
 
-			<div id=''class='col-md-8 col-md-offset-2'style='border:1px solid black;height:50vh;background:url(http://159.203.107.182:3000/img/guitar/Desktop/vectorGuitar.png) no-repeat;background-size:contain;position:relative;'>
+	<!-- DESKTOP -->
+	<div id=''class='hidden-sm hidden-xs'style='margin-bottom:3%;'>
+		
+		<div id=''class='col-md-12'style=''>
 
-				<div id=''class=''style='border:1px solid black;height:13vh;position:relative;top:18vh;left:14.4vw;width:60.5%;padding:0;'>
-					<div id=''class='col-md-12'style='height:100%;border:1px solid black;width:{{fretLength[0]}}%;padding:0;'>
-							<div ng-if='fretRatio == 1 || showAll == true'id=''class=''style='border-right:3px solid black;height:100%;width:50%;'>
+			<div id=''class='col-md-8 col-md-offset-2'style='height:50vh;background:url(http://159.203.107.182:3000/img/guitar/Desktop/vectorGuitar.png) no-repeat;background-size:contain;position:relative;padding:0;'>
+
+				<div id=''class=''style='height:13vh;position:relative;top:18vh;left:15.4vw;width:59.1%;padding:0'>
+					<div id=''class='col-md-12'style='height:100%;border-right:3px solid red;width:{{fretLength[startFret]}}%;padding:0;'>
+							<div ng-if='fretRatio == 1 || fretRatio == 0'id='harm0'class=''style='border-right:3px solid #1413af;height:100%;width:50%;position:relative;z-index:4;'>
 								
 							
 							</div>
-							<div ng-if='fretRatio == 2 || showAll == true'id=''class=''style='height:100%;position:relative;bottom:100%;'>
-								<div id=''class='col-md-6'style='border-right:3px solid black;height:100%;width:33.3%;'>
+							<div ng-class='{fretThird:fretRatio == 0}'ng-if='fretRatio == 2 || fretRatio == 0'id='harm1'class='harmDesk'style=''>
+								<div id=''class='col-md-6 harmThirdDesk'style='border-right:3px solid #cc9900;height:100%;width:33.3%;'>
 							
 							
 								</div>
-								<div id=''class='col-md-6'style='border-right:3px solid black;height:100%;width:33.3%;'>
+								<div id=''class='col-md-6 harmThirdDesk'style='border-right:3px solid #cc9900;height:100%;width:33.3%;'>
 							
 							
 								</div>
 							</div>
-							<div ng-if='fretRatio == 3 || showAll == true'id=''class=''style='height:100%;position:relative;bottom:200%;'>
-								<div id=''class='col-md-4'style='height:100%;border-right:3px solid black;width:25%;'>
+							<div ng-class='{fretQuart:fretRatio == 0}'ng-if='fretRatio == 3 || fretRatio == 0'id='harm2'class='harmDesk'style='height:100%;position:relative;'>
+								<div id=''class='col-md-4 harmQuartDesk'style='height:100%;width:25%;'>
 								
 								
 								</div>
-								<div id=''class='col-md-4'style='height:100%;border-right:3px solid black;width:25%;'>
+								<div id=''class='col-md-4 harmQuartDesk'style='height:100%;width:25%;'>
 								
 								
 								</div>
-								<div id=''class='col-md-4'style='height:100%;border-right:3px solid black;width:25%;'>
+								<div id=''class='col-md-4 harmQuartDesk'style='height:100%;width:25%;'>
 								
 								
 								</div>
@@ -45,6 +50,16 @@
 
 
 
+
+
+		</div>
+	</div>
+
+	<!-- MOBILE -->
+	<div id=''class='hidden-md hidden-lg'style=''>
+	
+	
+	</div>
 
 
 </div>
