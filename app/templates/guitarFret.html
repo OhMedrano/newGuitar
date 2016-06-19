@@ -5,15 +5,15 @@
 		<div id=''class='hidden-sm hidden-xs 'style=''>
 			<div id=''class='col-md-12'style=''>
 				<div id=''class='col-md-1 col-md-offset-2'style='border:1px none;text-align:center;'>
-					<div id=''class='col-md-12'style=''>
+					<div id=''class='col-md-12'style=''ng-init='notationSwitch = false;'>
 					  Notation
 
 					</div>
-					<div id=''class='col-md-6'style='border-right:1px solid black;text-align:left;padding:1%;'ng-click='musicNotes = musicSharps'>
+					<div id=''class='col-md-6'style='border-right:1px solid black;text-align:left;padding:1%;'ng-click='musicNotes = musicSharps;notationSwitch = true'ng-class='{selected: notationSwitch == true}'>
 					Sharps
 
 					</div>
-					<div id=''class='col-md-6'style='border-left:1px solid black;text-align:center;padding:1%;'ng-click='musicNotes = musicFlats'>
+					<div id=''class='col-md-6'style='border-left:1px solid black;text-align:center;padding:1%;'ng-click='musicNotes = musicFlats;notationSwitch = false;'ng-class='{selected:notationSwitch == false}'>
 					Flats
 
 					</div>
@@ -43,13 +43,13 @@
 				
 				<div id=''class='col-md-9 col-md-offset-1 crimson
 				 'style='font-size:1.6em;'>
-					<div ng-click='changeTools = 0;noteSwitched = true'id=''class='col-md-4'style='text-align:left;cursor:pointer;'>
+					<div ng-class='{selected: changeTools == 0}'ng-click='changeTools = 0;noteSwitched = true'id=''class='col-md-4'style='text-align:left;cursor:pointer;'>
 					Scales
 					</div>
-					<div ng-click='changeTools = 1 ;noteSwitched = false'id=''class='col-md-4'style='text-align:center;;cursor:pointer;'>
+					<div ng-class='{selected: changeTools == 1}'ng-click='changeTools = 1 ;noteSwitched = false'id=''class='col-md-4'style='text-align:center;;cursor:pointer;'>
 					Chords
 					</div>
-					<div ng-click='changeTools = 2 ;'id=''class='col-md-4'style='text-align:right;;cursor:pointer;'>
+					<div ng-class='{selected: changeTools == 2}'ng-click='changeTools = 2 ;'id=''class='col-md-4'style='text-align:right;;cursor:pointer;'>
 					Tuning
 					</div>
 					
@@ -64,7 +64,7 @@
 								</span>
 
 							</div>
-							<div ng-repeat='note in musicNotes'id=''class='col-md-1 ptSans'style=';cursor:pointer;'ng-click='pickToneChord($index)'>
+							<div ng-repeat='note in musicNotes'id=''class='col-md-1 ptSans'style=';cursor:pointer;text-align:center;'ng-click='pickToneChord($index);highLightingChordNote($index);'ng-class='{selected: $index === music}'>
 							{{note}}
 
 							</div>
@@ -81,7 +81,7 @@
 
 							</div>
 							<div id=''class='col-md-12'style='overflow:auto;'>
-								<div ng-repeat='chord in musicChords'id=''class='col-md-3 col-md-offset-1 chordSelection'style='background-color:{{chord.color}};cursor:pointer;'ng-click='pickChord(chord)'>
+								<div ng-repeat='chord in musicChords'id=''class='col-md-3 col-md-offset-1 chordSelection'style='background-color:{{chord.color}};cursor:pointer;'ng-click='pickChord(chord);highLightingChord($index)'ng-class='{selected: $index === selectedChord}'>
 									<h3>{{chord.name}}</h3>
 
 								</div>
@@ -102,7 +102,7 @@
 				<div ng-if='changeTools == 0'id='changeScale'class='col-md-12'style='padding:4%;'ng-model='changeScale(pickedScale,musicRoot)'>
 						<div id=''class='col-md-12 'style='padding:2%;border-bottom:1px solid black;'>
 							
-							<div ng-repeat='note in musicNotes'id=''class='col-md-1 ptSans'style='font-size:1.3em;;cursor:pointer;'ng-click='pickTone($index)'>
+							<div ng-repeat='note in musicNotes'id=''class='col-md-1 ptSans'style='font-size:1.3em;;cursor:pointer;text-align:center;'ng-click='pickTone($index)'ng-class='{selected: $index  == musicRoot}'>
 							{{note}}
 
 
@@ -117,7 +117,7 @@
 
 							</div>
 						
-							<div ng-repeat='scale in allScale'id=''class='col-md-3 ptSans scaleSelection'style=';cursor:pointer;'ng-click='pickScale(scale)'>
+							<div ng-repeat='scale in allScale'id=''class='col-md-3 ptSans scaleSelection'style=';cursor:pointer;'ng-click='pickScale(scale);highLightScale($index)'ng-class='{selected:$index == selectedScale}'>
 							{{scale.name}}
 
 							</div>
@@ -130,12 +130,12 @@
 				<div ng-if='changeTools == 2'id='changeString'class='col-md-12'style='border:1px none;height:90%;'>
 					<div id=''class=''style='height:100%;'>
 					<div id=''class='col-md-6 col-md-offset-3 crimson'style='margin-bottom:2%;font-size:1.3em;position:absolute;z-index:1;top:2%;'>
-						<div ng-click='changeRoots = 0'id=''class='col-md-5'style='float:left;text-align:left;border-bottom:1px solid black;cursor:pointer;'>
+						<div ng-click='changeRoots = 0'id=''class='col-md-5'style='float:left;text-align:left;border-bottom:1px solid black;cursor:pointer;' ng-class='{selected: changeRoots == 0}'>
 						Individually
 
 
 						</div>
-						<div ng-click='changeRoots = 1'id=''class='col-md-5'style='float:right;text-align:right;border-bottom:1px solid black;cursor:pointer;'>
+						<div ng-click='changeRoots = 1'id=''class='col-md-5'style='float:right;text-align:right;border-bottom:1px solid black;cursor:pointer;' ng-class='{selected: changeRoots == 1}'>
 						Alternate Tunings
 
 
@@ -163,7 +163,7 @@
 							<div id=''class='col-md-8 ptSans'style='border:1px none;height:5vh;padding-top:1%;'>
 								
 								<div ng-repeat='note in musicNotes'id=''class='col-md-1'style=';text-align:center;padding:0.3%;'>
-									<div id=''class='col-md-6'style='background:#E8E2CF;float:left;padding-right:26px;cursor:pointer;'ng-click='changeNote(order,note)'>
+									<div id=''class='col-md-6'style='float:left;padding-right:26px;cursor:pointer;'ng-click='changeNote(order,note)'ng-class='{selected: $index == strings[order]}'>
 										{{note}}
 
 									</div>
@@ -194,7 +194,7 @@
 					<div ng-if='changeRoots == 1'id=''class='col-md-12'style='height:100%;margin-bottom:2%;top:10%;position:relative;overflow:y;'>	
 						<div id=''class='col-md-10 col-md-offset-2'style='overflow:auto;height:100%;'>
 						<div ng-repeat='tune in tunings'ng-click='changeGroup(tune.forumla)'id=''class='col-md-3 scaleSelection ptSans'style='
-						cursor:pointer;'>
+						cursor:pointer;'ng-class='{selected:tune.forumla == strings}'>
 						{{tune.name}}
 
 						</div>
